@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <META NAME="robots" CONTENT="noindex">
+    <title>WhereTheyStand</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Mulish:wght@700&display=swap" rel="stylesheet">
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-PBZ7BZ72WY"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-PBZ7BZ72WY');
+</script>
+
+</head>
+
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #58787f">
+    <a class="navbar-brand" href="/" style="font-family:'Mulish',sans-serif;">WhereTheyStand</a>
+
+</nav>
+
+
+
+<div class="container text-center" style="padding-top:50px; font-family: 'Open Sans',sans-serif;">
+    <h1>This website is a backend service only.</h1>
+    <hr/>
+    <h3>To see election results, visit <a href="https://election.wheretheystand.nz">election.wheretheystand.nz</a>.</h3>
+	<p>You can visit WhereTheyStand at <a href="https://wheretheystand.nz">wheretheystand.nz</a>.<p>
+    <hr/>
+    <p class="mt-5">
+        <strong>Current configuration data:</strong> (for debugging purposes)
+        <table class="table">
+            <tbody>
+                <tr>
+                    <th class="text-right" style="width: 50%">
+                        Election
+                    </th>
+                    <td class="text-left">
+                        {{ election_name }}
+                    </td>
+                </tr>
+                <tr>
+                    <th class="text-right" style="width: 50%">
+                        Election date
+                    </th>
+                    <td class="text-left">
+                        {{ election_date.isoformat }}
+                    </td>
+                </tr>
+                <tr>
+                    <th class="text-right" style="width: 50%">
+                        Go-live time
+                    </th>
+                    <td class="text-left">
+                        {{ go_live.isoformat }}
+                    </td>
+                </tr>
+                <tr>
+                    <th class="text-right" style="width: 50%">
+                        Database in use
+                    </th>
+                    <td class="text-left">
+                        {{ database }}
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </p>
+</div>
+
+
+
+</body>
+
+</html>
+

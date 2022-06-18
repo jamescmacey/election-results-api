@@ -1,0 +1,11 @@
+runtime: python310
+
+automatic_scaling:
+  min_instances: 0
+  max_instances: 60
+
+
+handlers:
+  - url: /.*
+    script: main.py
+    secure: always

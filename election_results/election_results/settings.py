@@ -11,6 +11,101 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 """
 
 from pathlib import Path
+from datetime import datetime, date
+from zoneinfo import ZoneInfo
+
+
+# Election configuration
+ELECTION_CONFIG = {
+    "election_name": "Tauranga by-election",
+    "election_date": date(2022, 6, 18),
+    "go_live": datetime(2022, 6, 18, 19, 00, tzinfo=ZoneInfo("Pacific/Auckland")),
+    "database": "2022-tga-by-prod",
+    "parties": [
+        {
+            "name": "National Party",
+            "abbreviation": "NAT",
+            "colour": "#2f8acc",
+            "p_no": 16,
+        },
+        {
+            "name": "Aotearoa Legalise Cannabis Party",
+            "abbreviation": "ALCP",
+            "colour": "#006500",
+            "p_no": 36,
+        },
+        {
+            "name": "ONE Party",
+            "abbreviation": "ONE",
+            "colour": "#000000",
+            "p_no": 37,
+        },
+        {
+            "name": "NZ Outdoors & Freedom Party",
+            "abbreviation": "NZOF",
+            "colour": "#008000",
+            "p_no": 20,
+        },
+        {
+            "name": "New Nation Party",
+            "abbreviation": "NNP",
+            "colour": "#4646b2",
+            "p_no": 49,
+        },
+        {
+            "name": "New Conservative",
+            "abbreviation": "CON",
+            "colour": "#00AEF0",
+            "p_no": 34,
+        },
+        {
+            "name": "ACT New Zealand",
+            "abbreviation": "ACT",
+            "colour": "#ffd100",
+            "p_no": 5,
+        },
+        {
+            "name": "Labour Party",
+            "abbreviation": "LAB",
+            "colour": "#d82a21",
+            "p_no": 13,
+        },
+    ],
+    "previous_results": {
+        10: {
+            "was_different_candidate": True,
+            "count": 18721,
+            "percent_of_valid": 43.5,
+        },
+        4: {
+            "was_different_candidate": False,
+            "count": 16865,
+            "percent_of_valid": 39.2,
+        },
+        9: {
+            "was_different_candidate": True,
+            "count": 725,
+            "percent_of_valid": 1.7,
+        },
+        12: {
+            "was_different_candidate": True,
+            "count": 188,
+            "percent_of_valid": 0.4,
+        },
+        5: {
+            "was_different_candidate": False,
+            "count": 1739,
+            "percent_of_valid": 4.0,
+        },
+        7: {
+            "was_different_candidate": False,
+            "count": 63,
+            "percent_of_valid": 0.1,
+        }
+    }
+}
+
+# 2020: 43776 toal 43,070 w/o informals
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -20,13 +115,17 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-3v3qk3#h_dt2_$@t=l%ht8moi(u3#%r!vo3p0zm7+5xw^phtv9'
+from .secrets import SECRET_KEY
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+if DEBUG:
+    ALLOWED_HOSTS = ["0.0.0.0", "127.0.0.1", "localhost"]
+else:
+    ALLOWED_HOSTS = ["0.0.0.0", "127.0.0.1", "localhost", "api.election.wheretheystand.nz"]
 
+CORS_ALLOW_ALL_ORIGINS = True
 
 # Application definition
 
@@ -37,9 +136,13 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    "corsheaders",
+    "rest_framework",
+    "api"
 ]
 
 MIDDLEWARE = [
+    "corsheaders.middleware.CorsMiddleware",
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -68,18 +171,6 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'election_results.wsgi.application'
-
-
-# Database
-# https://docs.djangoproject.com/en/4.0/ref/settings/#databases
-
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
-}
-
 
 # Password validation
 # https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators

@@ -1,0 +1,11 @@
+asgiref==3.5.2
+Django==4.0.5
+django-cors-headers==3.13.0
+django-rest-framework==0.1.0
+djangorestframework==3.13.1
+dnspython==2.2.1
+pykerberos==1.2.4
+pymongo==4.1.1
+python-snappy==0.6.1
+pytz==2022.1
+sqlparse==0.4.2
