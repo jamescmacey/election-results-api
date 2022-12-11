@@ -17,95 +17,117 @@ from zoneinfo import ZoneInfo
 
 # Election configuration
 ELECTION_CONFIG = {
-    "election_name": "Tauranga by-election",
-    "election_date": date(2022, 6, 18),
-    "go_live": datetime(2022, 6, 18, 19, 00, tzinfo=ZoneInfo("Pacific/Auckland")),
-    "database": "2022-tga-by-prod",
+    "election_name": "Hamilton West by-election",
+    "election_date": date(2022, 12, 10),
+    "go_live": datetime(2022, 12, 10, 19, 00, tzinfo=ZoneInfo("Pacific/Auckland")),
+    "database": "2022-ham-west-by-prod",
     "parties": [
         {
             "name": "National Party",
             "abbreviation": "NAT",
             "colour": "#2f8acc",
-            "p_no": 16,
+            "p_no": 13,
         },
         {
             "name": "Aotearoa Legalise Cannabis Party",
             "abbreviation": "ALCP",
             "colour": "#006500",
-            "p_no": 36,
-        },
-        {
-            "name": "ONE Party",
-            "abbreviation": "ONE",
-            "colour": "#000000",
-            "p_no": 37,
+            "p_no": 31,
         },
         {
             "name": "NZ Outdoors & Freedom Party",
             "abbreviation": "NZOF",
             "colour": "#008000",
-            "p_no": 20,
+            "p_no": 47,
         },
         {
-            "name": "New Nation Party",
-            "abbreviation": "NNP",
-            "colour": "#4646b2",
-            "p_no": 49,
-        },
-        {
-            "name": "New Conservative",
-            "abbreviation": "CON",
+            "name": "New Conservative + One Party",
+            "abbreviation": "NCOP",
             "colour": "#00AEF0",
-            "p_no": 34,
+            "p_no": 50,
         },
         {
             "name": "ACT New Zealand",
             "abbreviation": "ACT",
             "colour": "#ffd100",
-            "p_no": 5,
+            "p_no": 45,
         },
         {
             "name": "Labour Party",
             "abbreviation": "LAB",
             "colour": "#d82a21",
-            "p_no": 13,
+            "p_no": 10,
+        },
+        {
+            "name": "Money Free Party",
+            "abbreviation": "MFP",
+            "colour": "#f4e5c0",
+            "p_no": 12,
+        },
+        {
+            "name": "The Opportunities Party (TOP)",
+            "abbreviation": "TOP",
+            "colour": "#0ab598",
+            "p_no": 20,
+        },
+        {
+            "name": "New Zealand Momentum Party",
+            "abbreviation": "NZMP",
+            "colour": "#be3971",
+            "p_no": 51,
+        },
+        {
+            "name": "Vision New Zealand",
+            "abbreviation": "VNZ",
+            "colour": "#06adef",
+            "p_no": 28,
         },
     ],
     "previous_results": {
-        10: {
+        2: {
             "was_different_candidate": True,
-            "count": 18721,
-            "percent_of_valid": 43.5,
+            "was_different_party": False,
+            "count": 20703,
+            "percent_of_valid": 53.0,
         },
-        4: {
+        12: {
             "was_different_candidate": False,
-            "count": 16865,
-            "percent_of_valid": 39.2,
+            "was_different_party": True,
+            "count": 20703,
+            "percent_of_valid": 53.0,
         },
         9: {
             "was_different_candidate": True,
-            "count": 725,
-            "percent_of_valid": 1.7,
+            "was_different_party": False,
+            "count": 14436,
+            "percent_of_valid": 37.0,
         },
-        12: {
+        11: {
             "was_different_candidate": True,
-            "count": 188,
-            "percent_of_valid": 0.4,
+            "was_different_party": False,
+            "count": 1186,
+            "percent_of_valid": 3.0,
+        },
+        1: {
+            "was_different_candidate": True,
+            "was_different_party": False,
+            "count": 1024,
+            "percent_of_valid": 2.6,
+        },
+        10: {
+            "was_different_candidate": False,
+            "was_different_party": True,
+            "count": 615,
+            "percent_of_valid": 1.6,
         },
         5: {
-            "was_different_candidate": False,
-            "count": 1739,
-            "percent_of_valid": 4.0,
+            "was_different_candidate": True,
+            "was_different_party": False,
+            "count": 357,
+            "percent_of_valid": 0.9,
         },
-        7: {
-            "was_different_candidate": False,
-            "count": 63,
-            "percent_of_valid": 0.1,
-        }
     }
 }
-
-# 2020: 43776 toal 43,070 w/o informals
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -123,7 +145,7 @@ DEBUG = False
 if DEBUG:
     ALLOWED_HOSTS = ["0.0.0.0", "127.0.0.1", "localhost"]
 else:
-    ALLOWED_HOSTS = ["0.0.0.0", "127.0.0.1", "localhost", "api.election.wheretheystand.nz"]
+    ALLOWED_HOSTS = ["0.0.0.0", "127.0.0.1", "localhost", "api.election.wheretheystand.nz", "dev.api.election.wheretheystand.nz","dev-dot-wheretheystand-elections.ts.r.appspot.com"]
 
 CORS_ALLOW_ALL_ORIGINS = True
 
