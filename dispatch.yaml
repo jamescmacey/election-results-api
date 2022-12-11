@@ -1,6 +1,6 @@
 dispatch:
 - url: "api.election.wheretheystand.nz/*"
-  service: default
+  service: frontend
 - url: "election.wheretheystand.nz/*"
   service: frontend
 - url: "www.election.wheretheystand.nz/*"
