@@ -21,5 +21,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('config-data/', views.statics, name = "configs"),
     path('results/', views.results, name = "results"),
+    path('is-alive/', views.isalive, name = "isalive"),
     path('', views.index, name = "index")
 ]

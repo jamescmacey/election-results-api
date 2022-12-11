@@ -32,6 +32,17 @@ def statics(request):
 
     return JsonResponse(response)
 
+def isalive(request):
+    db = MONGO_CLIENT
+
+    try:
+        _ = list(db.election.find({}))[0]
+        response = {"is_alive": True}
+    except:
+        response = {"is_alive": False}
+
+    return JsonResponse(response)
+
 def results(request):
     response = {
         "election": None,
