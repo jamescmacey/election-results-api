@@ -1,9 +1,3 @@
 dispatch:
 - url: "api.election.wheretheystand.nz/*"
   service: frontend
-- url: "election.wheretheystand.nz/*"
-  service: frontend
-- url: "www.election.wheretheystand.nz/*"
-  service: frontend
-- url: "dev.api.election.wheretheystand.nz/*"
-  service: dev

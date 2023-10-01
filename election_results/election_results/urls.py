@@ -14,13 +14,17 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
-from api import views
+from django.urls import path, include
+from api import views, tauranga_views, hamilton_views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('config-data/', views.statics, name = "configs"),
-    path('results/', views.results, name = "results"),
-    path('is-alive/', views.isalive, name = "isalive"),
-    path('', views.index, name = "index")
+    path('legacy/tauranga/config-data/', tauranga_views.statics, name = "configs"),
+    path('legacy/tauranga/results/', tauranga_views.results, name = "results"),
+    path('legacy/tauranga/is-alive/', tauranga_views.isalive, name = "isalive"),
+    path('legacy/hamilton/config-data/', hamilton_views.statics, name = "configs"),
+    path('legacy/hamilton/results/', hamilton_views.results, name = "results"),
+    path('legacy/hamilton/is-alive/', hamilton_views.isalive, name = "isalive"),
+    path("events/", include("api.api_urls")),
+    path('', views.index, name = "index"),
 ]
